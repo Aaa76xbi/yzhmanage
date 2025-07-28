@@ -20,3 +20,6 @@ android.extra_libs = %(source.dir)s/libs/armeabi-v7a/*.so
 android.assets = tessdata/
 android.icon = icon.png
 android.private_storage = True
+
+[buildozer]
+android.sdk_path = /home/adminxbj/android/sdk
