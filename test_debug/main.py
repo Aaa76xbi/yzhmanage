@@ -234,7 +234,7 @@ def scan_from_camera():
         else:
             # 未识别到二维码时的提示（用英文避免乱码）
             h, w = frame.shape[:2]
-            warning_text = "Please hold QR code close to camera"
+            warning_text = "Please hold the QR code close to the camera --- Aaa76MaBy"
             cv2.putText(frame, warning_text, (int(w * 0.05), int(h * 0.95)), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255),
                         2)
             cv2.imshow("摄像头扫码", frame)
@@ -247,16 +247,6 @@ def scan_from_camera():
     return result
 
 
-# if __name__ == "__main__":
-#     print("选择功能：\n1 - 摄像头识别二维码\n2 - 上传图片识别二维码")
-#     choice = input("请输入选项 (1 或 2): ").strip()
-#
-#     if choice == '1':
-#         scan_from_camera()
-#     elif choice == '2':
-#         select_image()
-#     else:
-#         print("无效选项，请输入 1 或 2")
 
 if __name__ == "__main__":
     # 创建主窗口

@@ -23,3 +23,5 @@ android.private_storage = True
 
 [buildozer]
 android.sdk_path = /home/adminxbj/android/sdk
+android.make_args = -j 4
+android.build_flags = --debug
