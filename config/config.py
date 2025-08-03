@@ -6,9 +6,13 @@ class JLHconfig:
     device_search_url = 'https://webapi.nbiotyun.com/device/deviceList'  # 设备搜索
     huifu_device_status_url = 'https://webapi.nbiotyun.com/deviceState/enable'  # 恢复设备使用状态
     jihuo_device_url = 'https://webapi.nbiotyun.com/deviceState/reset'  # 激活设备
+    devices_add_url = 'https://webapi.nbiotyun.com/device/add'
+
 
     hm_login_url = 'https://webapi.nbiotyun.com/login/multipartAccountLogin'
     hm_devices_sousuo_url = 'https://webapi.nbiotyun.com/device/deviceList'
+    hm_devices_huifushiyong_ul = 'https://webapi.nbiotyun.com/deviceState/enable'
+    hm_devices_fuwei_url = 'https://webapi.nbiotyun.com/deviceState/reset'
 
     def login(self):
         login_dict = {
@@ -24,6 +28,25 @@ class JLHconfig:
 
         }
         return login_dict
+
+    def devices_add(self,device_id):
+        devices_add_dict = {
+            'headers': {
+            'Cache-Control': 'no-cache',
+            'User-Agent': 'PostmanRuntime/7.43.4',
+            'Accept': '*/*',
+        },
+            'data': {
+                  "deviceType": "",
+                  "deviceVersionId": "",
+                  "deviceBatchId": "",
+                  "accessFlag": 1,
+                  "deviceImei": device_id,
+                  "boxNum": ""
+                }
+        }
+
+        return devices_add_dict
 
     def select_gongyingshang(self,changjia_id):
 
@@ -184,3 +207,51 @@ class hmConfig:
         }
 
         return devices_sosuo_dict
+
+    def hm_devices_add(self,devices_id):
+        hm_devices_add_dict = {
+            'data': {
+              "deviceType": "",
+              "deviceVersionId": "",
+              "deviceBatchId": "",
+              "accessFlag": 1,
+              "deviceImei": devices_id,
+              "boxNum": ""
+            },
+            'headers': {
+            'Cache-Control': 'no-cache',
+            'User-Agent': 'PostmanRuntime/7.43.4',
+            'Accept': '*/*',
+        }
+
+        }
+        return  hm_devices_add_dict
+
+    def  hm_devices_jihuo(self,devices_id):
+        hm_devices_jihuo_dict = {
+            'data': {
+              "deviceImeiList": devices_id
+            },
+            'headers': {
+            'Cache-Control': 'no-cache',
+            'User-Agent': 'PostmanRuntime/7.43.4',
+            'Accept': '*/*',
+        }
+
+        }
+        return  hm_devices_jihuo_dict
+
+    def  hm_devices_huifu(self,devices_id):
+        hm_devices_huifu_dict = {
+            'data': {
+              "deviceImeiList": devices_id,
+              "stateRemark": "设备恢复使用状态"
+            },
+            'headers': {
+            'Cache-Control': 'no-cache',
+            'User-Agent': 'PostmanRuntime/7.43.4',
+            'Accept': '*/*',
+        }
+
+        }
+        return  hm_devices_huifu_dict
